@@ -1,0 +1,41 @@
+.header {
+    background-color: #1f1f1f; /* Dark background */
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #ffffff; /* White text */
+    font-size: 1.5em;
+  }
+  
+  .search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+  }
+  
+  button {
+    background-color: #4caf50; /* Green button */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .user-icon {
+    color: #ffffff; /* White text */
+    font-size: 1.2em;
+  }

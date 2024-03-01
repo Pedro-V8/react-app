@@ -1,4 +1,5 @@
 import React from 'react';
+import './Cart.css'; // Import the CSS file
 
 function Cart() {
   return (
