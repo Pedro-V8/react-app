@@ -1,0 +1,7 @@
+/* components/ProductList/ProductList.css */
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }

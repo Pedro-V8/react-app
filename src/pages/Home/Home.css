@@ -1,0 +1,12 @@
+/* pages/Home/Home.css */
+
+h1 {
+    text-align: center;
+    color: #5bbaff; /* Light blue text */
+  }
+  
+  .product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
