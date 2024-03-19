@@ -10,7 +10,7 @@ import './Home.css';
 
 function Home() {
   const [clientData, setClientData] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://localhost:8000/clients/')
