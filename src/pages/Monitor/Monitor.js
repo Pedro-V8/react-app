@@ -10,10 +10,12 @@ function Monitor() {
 
   const [websckt, setWebsckt] = useState(null);
   const [data, setData] = useState([]);
-  const [isMounted, setIsMounted] = useState(false); // Track component mount state
+  const [clientId, setClienId] = useState(
+    Math.floor(new Date().getTime() / 1000)
+  );
   
   useEffect(() => {
-    const url = "ws://localhost:8000/ws/" + 1;
+    const url = "ws://192.168.10.251:8000/ws/" + clientId;
     const ws = new WebSocket(url);
     ws.onopen = () => {
       ws.send(JSON.stringify(client));
@@ -21,6 +23,7 @@ function Monitor() {
 
     ws.onmessage = (e) => {
       const message = JSON.parse(e.data);
+      console.log(message);
       setData(JSON.parse(message));
     };
 
@@ -28,12 +31,14 @@ function Monitor() {
 
     // Cleanup function when the component unmounts
     return () => {
-      ws.close();
+      ws.close()
+      console.log("Test");
     };
 
   }, []);
 
   function goHome() {
+
     navigate("/");
   }
 

@@ -13,7 +13,7 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/clients/')
+    axios.get('http://192.168.10.251:8000/clients/')
       .then(response => {
         setClientData(response.data);
       })
