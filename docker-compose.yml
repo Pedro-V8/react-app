@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    container_name: monitor-front
+    build: .
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 3000:3000
+    restart: always
