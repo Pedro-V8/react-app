@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import './Oficina.css';
+import './Oficina.css'; // Ajuste o nome do arquivo de estilo conforme necessário
 
 function Oficina() {
   const [oficinaData, setOficinaData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [newOficina, setNewOficina] = useState({ name: "", address: "" });
   const [editIndex, setEditIndex] = useState(null);
+  const [showCarsModal, setShowCarsModal] = useState(false);
+  const [showMotosModal, setShowMotosModal] = useState(false);
+  const [selectedCars, setSelectedCars] = useState([]);
+  const [selectedMotos, setSelectedMotos] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   async function fetchData() {
     try {
       const response = await axios.get('http://localhost:8000/workshops');
       setOficinaData(response.data);
     } catch (error) {
-      console.error('Erro ao buscar dados da oficina:', error);
+      console.error('Erro ao buscar dados das oficinas:', error);
     }
   }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   async function createOficina() {
     try {
       await axios.post('http://localhost:8000/workshop', newOficina);
-      
       setShowModal(false);
       setNewOficina({ name: "", address: "" });
       fetchData();
@@ -35,9 +38,9 @@ function Oficina() {
     }
   }
 
-  async function deleteOficina(index) {
+  async function deleteOficina(id) {
     try {
-      await axios.delete(`http://localhost:8000/workshop/${oficinaData[index].id}`);
+      await axios.delete(`http://localhost:8000/workshop/${id}`);
       fetchData();
     } catch (error) {
       console.error('Erro ao excluir oficina:', error);
@@ -68,6 +71,26 @@ function Oficina() {
     } catch (error) {
       console.error('Erro ao atualizar oficina:', error);
     }
+  }
+
+  function openCarsModal(cars) {
+    setSelectedCars(cars);
+    setShowCarsModal(true);
+  }
+
+  function closeCarsModal() {
+    setShowCarsModal(false);
+    setSelectedCars([]);
+  }
+
+  function openMotosModal(motos) {
+    setSelectedMotos(motos);
+    setShowMotosModal(true);
+  }
+
+  function closeMotosModal() {
+    setShowMotosModal(false);
+    setSelectedMotos([]);
   }
 
   function goHome() {
@@ -104,6 +127,8 @@ function Oficina() {
             <tr>
               <th className="oficina-th">Nome</th>
               <th className="oficina-th">Endereço</th>
+              <th className="oficina-th">Carros</th>
+              <th className="oficina-th">Motos</th>
               <th className="oficina-th">Editar</th>
               <th className="oficina-th">Excluir</th>
             </tr>
@@ -113,13 +138,49 @@ function Oficina() {
               <tr className="oficina-tr" key={index}>
                 <td className="oficina-td">{oficina.name}</td>
                 <td className="oficina-td">{oficina.address}</td>
+                <td className="oficina-td">
+                  <button className="oficina-button" onClick={() => openCarsModal(oficina.cars)}>Ver Carros</button>
+                </td>
+                <td className="oficina-td">
+                  <button className="oficina-button" onClick={() => openMotosModal(oficina.motorcycles)}>Ver Motos</button>
+                </td>
                 <td className="oficina-td"><button className="oficina-button" onClick={() => editOficina(index)}>Editar</button></td>
-                <td className="oficina-td"><button className="oficina-button" onClick={() => deleteOficina(index)}>Excluir</button></td>
+                <td className="oficina-td"><button className="oficina-button" onClick={() => deleteOficina(oficina.id)}>Excluir</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Modal de Carros */}
+      {showCarsModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <span className="close" onClick={closeCarsModal}>&times;</span>
+            <h2>Carros</h2>
+            <ul>
+              {selectedCars.map((car, idx) => (
+                <li key={idx}>{car.model} - {car.year} - {car.color}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de Motos */}
+      {showMotosModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <span className="close" onClick={closeMotosModal}>&times;</span>
+            <h2>Motos</h2>
+            <ul>
+              {selectedMotos.map((moto, idx) => (
+                <li key={idx}>{moto.model} - {moto.year} - {moto.color}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
