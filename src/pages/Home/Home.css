@@ -1,25 +1,37 @@
-/* src/App.css */
+/* Home.css */
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.home-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-th, td {
-  padding: 8px;
+.home-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   text-align: center;
-  border-bottom: 1px solid #ddd;
 }
 
-tr:hover {
-  background-color: #f2f2f2;
+.home-li {
+  margin-bottom: 10px;
 }
 
-th {
+.home-button {
+  width: 200px; 
+  padding: 10px 20px;
+  margin: 0 auto;
+  display: block;
   background-color: #4CAF50;
-  color: white;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.icon {
-  cursor: pointer;
+.home-button:hover {
+  background-color: #0056b3;
 }

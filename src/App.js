@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Monitor from "./pages/Monitor/Monitor";
+import Carro from "./pages/Carro/Carro";
+import Moto from "./pages/Moto/Moto";
+import Oficina from "./pages/Oficina/Oficina";
 
 
 function App() {
@@ -9,7 +11,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/monitor" element={<Monitor />} />
+        <Route path="/carros" element={<Carro />} />
+        <Route path="/motos" element={<Moto />} />
+        <Route path="/oficinas" element={<Oficina />} />
         
       </Routes>
     </Router>

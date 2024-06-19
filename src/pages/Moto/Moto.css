@@ -1,0 +1,80 @@
+/* Moto.css */
+
+.moto-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .moto-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .moto-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .moto-h2 {
+    margin-top: 0;
+  }
+  
+  .moto-button {
+    width: 200px; 
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .moto-button[type="submit"] {
+    margin-top: 20px;
+  }
+  
+  .moto-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .moto-monitoring-table {
+    margin-top: 20px;
+  }
+  
+  .moto-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .moto-th, .moto-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .moto-th {
+    background-color: #f2f2f2;
+  }
+  
+  .moto-tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .moto-tr:hover {
+    background-color: #ddd;
+  }
+  
