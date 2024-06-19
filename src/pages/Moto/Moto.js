@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import './Moto.css'; // Ajuste o nome do arquivo de estilo conforme necessário
+import './Moto.css'; 
 
 function Moto() {
   const [motoData, setMotoData] = useState([]);
@@ -38,7 +38,7 @@ function Moto() {
   }, []);
 
   async function createMoto(event) {
-    event.preventDefault(); // Evita o comportamento padrão do formulário de recarregar a página
+    event.preventDefault();
     try {
       await axios.post('http://localhost:8000/motorcycle', newMoto); 
       setShowModal(false);
@@ -78,11 +78,11 @@ function Moto() {
 
   async function updateMoto() {
     try {
-      await axios.put(`http://localhost:8000/motorcycle/${newMoto.id}`, newMoto); // Rota para atualizar uma moto específica
+      await axios.put(`http://localhost:8000/motorcycle/${newMoto.id}`, newMoto); 
       setShowModal(false);
       setNewMoto({ model: "", year: "", color: "", workshop_id: "" });
       setEditIndex(null);
-      fetchMotos(); // Atualiza a lista de motos após a atualização
+      fetchMotos(); 
     } catch (error) {
       console.error('Erro ao atualizar moto:', error);
     }

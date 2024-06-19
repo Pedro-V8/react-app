@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import './Oficina.css'; // Ajuste o nome do arquivo de estilo conforme necessário
+import './Oficina.css';
 
 function Oficina() {
   const [oficinaData, setOficinaData] = useState([]);
@@ -152,7 +152,7 @@ function Oficina() {
         </table>
       </div>
 
-      {/* Modal de Carros */}
+     
       {showCarsModal && (
         <div className="modal-overlay">
           <div className="modal">
@@ -167,7 +167,7 @@ function Oficina() {
         </div>
       )}
 
-      {/* Modal de Motos */}
+      
       {showMotosModal && (
         <div className="modal-overlay">
           <div className="modal">
